@@ -1,0 +1,36 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "python.defaultInterpreterPath": "${workspaceFolder}/env/Scripts/python.exe",
+        "python.analysis.extraPaths": [
+            "${workspaceFolder}/src",
+            "${workspaceFolder}/plugins"
+        ],
+        "python.analysis.typeCheckingMode": "basic",
+        "editor.formatOnSave": true,
+        "files.exclude": {
+            "**/__pycache__": true,
+            "**/*.pyc": true,
+            ".pytest_cache": true,
+            "env": true,
+            "ai_env": true,
+            "chat_histories": true,
+            "chat_history": true,
+            "memories": true,
+            "fine_tune_data.jsonl*": true,
+            "main_chat_files": true,
+            "monitor_error.log": true,
+            "old_backup.zip": true
+        },
+        "git.enableSmartCommit": true,
+        "git.autofetch": true,
+        "git.confirmSync": false,
+        "python.formatting.provider": "black",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true
+    }
+}

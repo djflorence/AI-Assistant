@@ -1,0 +1,60 @@
+# Default configuration settings
+
+# Application settings
+app:
+  name: "Ava AI Assistant"
+  version: "1.0.0"
+  debug: false
+  log_level: "INFO"
+
+# Paths configuration
+paths:
+  memory_dir: "memory"
+  secure_info_file: "memory/david_info_secure.txt"
+  logs_dir: "logs"
+
+# Chat interface settings
+interface:
+  theme: "dark"
+  max_messages: 100
+  timestamp_format: "%H:%M:%S"
+  command_prefix: "/"
+  prompt: "You: "
+
+# Memory settings
+memory:
+  max_memories: 5
+  importance_threshold: 0.5
+  memory_file_format: "json"
+  index_file: "memory_index.json"
+  backup_interval_hours: 24
+
+# Voice settings
+voice:
+  enabled: true
+  input_device: "default"
+  output_device: "default"
+  language: "en-US"
+  timeout_seconds: 5
+  energy_threshold: 300
+
+# API settings (template - fill in your own values)
+api:
+  openai:
+    model: "gpt-4"
+    temperature: 0.7
+    max_tokens: 150
+    # Add your API key to .env file, not here
+    timeout_seconds: 30
+
+# Command settings
+commands:
+  memory:
+    aliases: ["memories", "recall"]
+    description: "Display recent memories"
+  help:
+    aliases: ["?", "commands"]
+    description: "Show available commands"
+  clear:
+    aliases: ["cls", "clean"]
+    description: "Clear chat window"
