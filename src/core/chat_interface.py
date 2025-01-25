@@ -13,6 +13,7 @@ from threading import Thread
 from queue import Queue, Empty
 
 import tkinter as tk
+import subprocess
 from tkinter import ttk, scrolledtext, messagebox
 from tkinter.scrolledtext import ScrolledText
 from PIL import Image, ImageTk
@@ -1185,50 +1186,73 @@ class ChatInterface(ttk.Frame):
     
     def show_git_status(self):
         """Show git status"""
-        self.add_to_chat("/git", is_user=True)
-        status = FileService.check_git_status()
-        if status:
+        try:
+            # Run git status command
+            result = subprocess.run(['git', 'status'], 
+                                 cwd=os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+                                 capture_output=True, 
+                                 text=True)
+            
+            # Get branch info
+            branch_result = subprocess.run(['git', 'branch', '--show-current'],
+                                        cwd=os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+                                        capture_output=True,
+                                        text=True)
+            
+            # Get remote info
+            remote_result = subprocess.run(['git', 'remote', '-v'],
+                                        cwd=os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+                                        capture_output=True,
+                                        text=True)
+            
+            status = {
+                'branch': branch_result.stdout.strip(),
+                'changes': [],
+                'untracked': [],
+                'remotes': list(set([line.split()[0] for line in remote_result.stdout.splitlines()]))
+            }
+            
+            # Parse git status output
+            for line in result.stdout.splitlines():
+                line = line.strip()
+                if 'modified:' in line:
+                    status['changes'].append(line)
+                elif 'new file:' in line:
+                    status['changes'].append(line)
+                elif 'deleted:' in line:
+                    status['changes'].append(line)
+                elif 'Untracked files:' in line:
+                    continue
+                elif line and not line.startswith(('On branch', 'Your branch', 'nothing to commit', '  (use ')):
+                    if not any(x in line for x in ['modified:', 'new file:', 'deleted:']):
+                        status['untracked'].append(line)
+
             response = "Git Repository Status:\n\n"
 
-            if status['branch']:
+            if status.get('branch'):
                 response += f"Current branch: {status['branch']}\n\n"
             
-            if status['changes']:
+            if status.get('changes'):
                 response += "Changes:\n"
                 for change in status['changes']:
                     response += f"  {change}\n"
             else:
                 response += "Working tree clean\n"
             
-            if status['untracked']:
+            if status.get('untracked'):
                 response += "\nUntracked files:\n"
                 for file in status['untracked']:
                     response += f"  {file}\n"
             
-            if status['remotes']:
+            if status.get('remotes'):
                 response += "\nRemotes:\n"
                 for remote in status['remotes']:
                     response += f"  {remote}\n"
-        else:
-            response = "Not a git repository or unable to get status."
-        self.add_to_chat(response, is_user=False)
-    
-    def show_dev_servers(self):
-        """Show running development servers"""
-        self.add_to_chat("/servers", is_user=True)
-        servers = FileService.find_development_servers()
-        if servers:
-            response = "Running Development Servers:\n\n"
-            for server in servers:
-                response += f"• {server['process_name']} (PID: {server['pid']})\n"
-                if 'local_address' in server:
-                    response += f"  Address: {server['local_address']}\n"
-                if 'status' in server:
-                    response += f"  Status: {server['status']}\n"
-                response += "\n"
-        else:
-            response = "No development servers currently running."
-        self.add_to_chat(response, is_user=False)
+            
+            self.add_to_chat(response, is_user=False)
+            
+        except Exception as e:
+            self.add_to_chat(f"Error getting git status: {str(e)}", is_user=False)
     
     def toggle_theme(self):
         """Toggle between light and dark theme"""
@@ -1496,15 +1520,28 @@ class ChatInterface(ttk.Frame):
     def on_closing(self):
         """Clean up resources before closing."""
         try:
-            # Stop RSS service
-            if hasattr(self, 'rss_service'):
-                self.rss_service.stop_auto_update()
-                
-            # Clean up other services
-            if hasattr(self, 'voice_service'):
-                self.voice_service.cleanup()
-            if hasattr(self, 'file_service'):
-                self.file_service.stop_monitoring()
+            # Stop all services
+            services_to_cleanup = [
+                'rss_service',
+                'voice_service',
+                'file_service',
+                'realtime_service',
+                'screen_monitor',
+                'chat_service',
+                'vision_service'
+            ]
+            
+            for service_name in services_to_cleanup:
+                if hasattr(self, service_name):
+                    service = getattr(self, service_name)
+                    if service and hasattr(service, 'cleanup'):
+                        service.cleanup()
+                    elif service and hasattr(service, 'stop'):
+                        service.stop()
+                    elif service and hasattr(service, 'stop_monitoring'):
+                        service.stop_monitoring()
+                    elif service and hasattr(service, 'stop_auto_update'):
+                        service.stop_auto_update()
             
             # Save any pending data
             self.save_chat()
@@ -1512,50 +1549,112 @@ class ChatInterface(ttk.Frame):
             # Clean up temporary files
             self.clean_temp_files()
             
+            # Clear any remaining threads in the queue
+            while not self.callback_queue.empty():
+                try:
+                    self.callback_queue.get_nowait()
+                except Empty:
+                    break
+            
+            # Force Python garbage collection
+            import gc
+            gc.collect()
+            
             # Destroy the window
             if self.master:
+                self.master.quit()  # This ensures Tk event loop stops
                 self.master.destroy()
+            
+            # Force exit if still running after 2 seconds
+            import threading
+            threading.Timer(2.0, lambda: os._exit(0)).start()
             
         except Exception as e:
             logging.error(f"Error during cleanup: {str(e)}")
-            
-        finally:
-            # Destroy the window
             if self.master:
+                self.master.quit()
                 self.master.destroy()
+            os._exit(1)  # Force exit on error
 
     def toggle_voice_input(self):
         """Toggle voice input on/off"""
         try:
-            if hasattr(self, 'voice_service'):
-                if self.voice_service.is_listening:
-                    self.stop_voice_input()
-                    self.voice_button.configure(style='Toolbar.TButton')
-                else:
-                    self.start_voice_input()
-                    self.voice_button.configure(style='Active.Toolbar.TButton')
+            if not self.voice_service.is_recording():
+                self.start_voice_input()
+            else:
+                self.stop_voice_input()
         except Exception as e:
-            self.add_to_chat(f"Error toggling voice input: {str(e)}", is_user=False)
+            logging.error(f"Error toggling voice input: {e}")
+            self.add_to_chat("Error with voice input. Please try again.", is_user=False)
 
     def start_voice_input(self):
         """Start voice input recording"""
         try:
-            if hasattr(self, 'voice_service'):
-                self.voice_service.start_listening(self.on_voice_input)
+            self.voice_service.start_recording(callback=self.on_voice_input)
+            self.update_status("Listening...")
         except Exception as e:
-            self.add_to_chat(f"Error starting voice input: {str(e)}", is_user=False)
+            logging.error(f"Error starting voice input: {e}")
+            self.add_to_chat("Could not start voice input. Please try again.", is_user=False)
 
     def stop_voice_input(self):
         """Stop voice input recording"""
         try:
-            if hasattr(self, 'voice_service'):
-                self.voice_service.stop_listening()
-                logging.error(f"Error stopping voice input: {e}")
+            self.voice_service.stop_recording()
+            self.update_status("Voice input stopped")
         except Exception as e:
             logging.error(f"Error stopping voice input: {e}")
 
+    def clear_chat(self):
+        """Clear the chat display"""
+        self.chat_display.configure(state='normal')
+        self.chat_display.delete("1.0", tk.END)
+        self.conversation_history.clear()
+        self.chat_display.configure(state='disabled')
+
+    def save_chat(self):
+        """Save the chat history to a file"""
+        try:
+            # Create chats directory if it doesn't exist
+            chats_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'chats')
+            os.makedirs(chats_dir, exist_ok=True)
+            
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            filename = os.path.join(chats_dir, f"chat_history_{timestamp}.txt")
+            
+            with open(filename, 'w', encoding='utf-8') as f:
+                chat_content = self.chat_display.get("1.0", tk.END)
+                f.write(chat_content)
+            
+            self.add_to_chat(f"Chat saved to {filename}", is_user=False)
+            
+        except Exception as e:
+            logging.error(f"Error saving chat: {str(e)}")
+            self.add_to_chat(f"Error saving chat: {str(e)}", is_user=False)
+
+    def add_to_chat(self, message, is_user=True):
+        """Add a message to the chat display"""
+        timestamp = datetime.now().strftime("%H:%M:%S")
+        
+        # Store message in conversation history
+        self.conversation_history.append({
+            'message': message,
+            'is_user': is_user,
+            'timestamp': timestamp
+        })
+        
+        # Format and display message
+        display_name = "You: " if is_user else "Assistant: "
+        self.chat_display.configure(state='normal')
+        self.chat_display.insert(tk.END, f"[{timestamp}] ", "timestamp")
+        self.chat_display.insert(tk.END, display_name, "name")
+        self.chat_display.insert(tk.END, f"{message}\n", "user" if is_user else "assistant")
+        self.chat_display.configure(state='disabled')
+        self.chat_display.see(tk.END)
+
     def upload_file(self):
         """Handle file upload"""
+        from tkinter import filedialog
+        
         filetypes = (
             ('All files', '*.*'),
             ('Text files', '*.txt'),
@@ -1599,7 +1698,7 @@ class ChatInterface(ttk.Frame):
                     
             except Exception as e:
                 self.add_to_chat(f"Error processing file: {str(e)}", is_user=False)
-    
+
     def take_screenshot(self):
         """Take and analyze a screenshot"""
         try:
@@ -1618,45 +1717,6 @@ class ChatInterface(ttk.Frame):
             
         except Exception as e:
             self.add_to_chat(f"Error taking screenshot: {str(e)}", is_user=False)
-    
-    def open_settings(self):
-        """Open settings dialog"""
-        # Create settings window
-        settings_window = tk.Toplevel(self)
-        settings_window.title("Settings")
-        settings_window.geometry("400x500")
-        settings_window.transient(self)
-        settings_window.grab_set()
-        
-        # Add settings content
-        ttk.Label(
-            settings_window,
-            text="Settings",
-            font=('Segoe UI', 16, 'bold')
-        ).pack(pady=10)
-        
-        # Create notebook for settings categories
-        notebook = ttk.Notebook(settings_window)
-        notebook.pack(fill='both', expand=True, padx=10, pady=5)
-        
-        # General settings
-        general_frame = ttk.Frame(notebook)
-        notebook.add(general_frame, text="General")
-        
-        # Voice settings
-        voice_frame = ttk.Frame(notebook)
-        notebook.add(voice_frame, text="Voice")
-        
-        # Theme settings
-        theme_frame = ttk.Frame(notebook)
-        notebook.add(theme_frame, text="Theme")
-        
-        # Add some basic settings
-        ttk.Label(
-            general_frame,
-            text="Coming soon...",
-            font=('Segoe UI', 10)
-        ).pack(pady=20)
 
     def create_tooltip(self, widget, text):
         """Create a tooltip for a widget"""
@@ -1698,117 +1758,98 @@ class ChatInterface(ttk.Frame):
         widget.bind('<Enter>', enter)
         widget.bind('<Leave>', leave)
 
-    def show_memory(self):
-        """Show memory usage"""
+    def analyze_image_full(self, filename):
+        """Analyze an image file"""
         try:
-            memory_info = self.file_service.get_memory_info()
-            self.display_system_info("Memory Information", memory_info)
+            description = self.vision_service.analyze_image(filename)
+            self.add_to_chat(f"Image Analysis: {description}", is_user=False)
         except Exception as e:
-            self.add_to_chat(f"Error getting memory info: {str(e)}", is_user=False)
+            self.add_to_chat(f"Error analyzing image: {str(e)}", is_user=False)
 
-    def process_message(self):
-        """Process the message in the input field."""
+    def analyze_text_file(self, filename):
+        """Analyze a text file"""
         try:
-            message = self.input_field.get("1.0", "end-1c").strip()
-            if not message:
-                return
-                
-            # Clear input field
-            self.input_field.delete("1.0", tk.END)
-            
-            # Add user message to chat
-            self.add_to_chat(message, is_user=True)
-            
-            # Get conversation history for context
-            history = self.get_conversation_history()
-            
-            # Process through chat service
-            response = self.chat_service.get_response(message, history)
-            
-            # Add assistant response to chat
-            if response:
-                self.add_to_chat(response, is_user=False)
-                
-                # Use voice if enabled
-                if self.voice_service and self.voice_service.is_enabled():
-                    self.voice_service.speak(response)
-            
-            # Save chat
-            self.save_chat()
-            
+            with open(filename, 'r', encoding='utf-8') as f:
+                content = f.read()
+            self.add_to_chat(f"I'll analyze this text file for you.", is_user=False)
+            self.process_message(f"Analyze this text: {content}")
         except Exception as e:
-            logging.error(f"Error processing message: {e}")
-            self.add_to_chat(f"I encountered an error: {str(e)}", is_user=False)
+            self.add_to_chat(f"Error analyzing text file: {str(e)}", is_user=False)
 
-    def toggle_voice_input(self):
-        """Toggle voice input on/off"""
+    def analyze_document(self, filename):
+        """Analyze a document file"""
         try:
-            if not self.voice_service.is_recording():
-                self.start_voice_input()
+            content = self.file_service.extract_text(filename)
+            self.add_to_chat(f"I'll analyze this document for you.", is_user=False)
+            self.process_message(f"Analyze this document: {content}")
+        except Exception as e:
+            self.add_to_chat(f"Error analyzing document: {str(e)}", is_user=False)
+
+    def analyze_generic_file(self, filename):
+        """Analyze any file type"""
+        try:
+            info = self.file_service.get_file_info(filename)
+            self.add_to_chat(f"File Information:\n{json.dumps(info, indent=2)}", is_user=False)
+        except Exception as e:
+            self.add_to_chat(f"Error analyzing file: {str(e)}", is_user=False)
+
+    def open_settings(self):
+        """Open settings dialog"""
+        # Create settings window
+        settings_window = tk.Toplevel(self)
+        settings_window.title("Settings")
+        settings_window.geometry("400x500")
+        settings_window.transient(self)
+        settings_window.grab_set()
+        
+        # Add settings content
+        ttk.Label(
+            settings_window,
+            text="Settings",
+            font=('Segoe UI', 16, 'bold')
+        ).pack(pady=10)
+        
+        # Create notebook for settings categories
+        notebook = ttk.Notebook(settings_window)
+        notebook.pack(fill='both', expand=True, padx=10, pady=5)
+        
+        # General settings
+        general_frame = ttk.Frame(notebook)
+        notebook.add(general_frame, text="General")
+        
+        # Voice settings
+        voice_frame = ttk.Frame(notebook)
+        notebook.add(voice_frame, text="Voice")
+        
+        # Theme settings
+        theme_frame = ttk.Frame(notebook)
+        notebook.add(theme_frame, text="Theme")
+        
+        # Add some basic settings
+        ttk.Label(
+            general_frame,
+            text="Coming soon...",
+            font=('Segoe UI', 10)
+        ).pack(pady=20)
+
+    def show_dev_servers(self):
+        """Show the status of development servers."""
+        try:
+            # Get list of running servers
+            result = subprocess.run(['netstat', '-ano'], capture_output=True, text=True)
+            if result.returncode == 0:
+                servers = []
+                for line in result.stdout.split('\n'):
+                    if 'LISTENING' in line:
+                        servers.append(line.strip())
+                
+                if servers:
+                    message = "Development Servers:\n" + "\n".join(servers)
+                else:
+                    message = "No development servers currently running."
             else:
-                self.stop_voice_input()
-        except Exception as e:
-            logging.error(f"Error toggling voice input: {e}")
-            self.add_to_chat("Error with voice input. Please try again.", is_user=False)
-
-    def start_voice_input(self):
-        """Start voice input recording"""
-        try:
-            self.voice_service.start_recording(callback=self.on_voice_input)
-            self.update_status("Listening...")
-        except Exception as e:
-            logging.error(f"Error starting voice input: {e}")
-            self.add_to_chat("Could not start voice input. Please try again.", is_user=False)
-
-    def stop_voice_input(self):
-        """Stop voice input recording"""
-        try:
-            self.voice_service.stop_recording()
-            self.update_status("Voice input stopped")
-        except Exception as e:
-            logging.error(f"Error stopping voice input: {e}")
-
-    def clear_chat(self):
-        """Clear the chat display"""
-        self.chat_display.configure(state='normal')
-        self.chat_display.delete("1.0", tk.END)
-        self.conversation_history.clear()
-        self.chat_display.configure(state='disabled')
-
-    def save_chat(self):
-        """Save the chat history to a file"""
-        try:
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                message = "Failed to get server status."
             
-            filename = f"chat_history_{timestamp}.txt"
-            
-            with open(filename, 'w', encoding='utf-8') as f:
-                chat_content = self.chat_display.get("1.0", tk.END)
-                f.write(chat_content)
-            
-            self.add_to_chat(f"Chat saved to {filename}", is_user=False)
-            self.update_status("Chat saved successfully")
-            
+            self.display_system_message(message)
         except Exception as e:
-            self.add_to_chat(f"Error saving chat: {str(e)}", is_user=False)
-            self.update_status("Error saving chat")
-
-    def add_to_chat(self, message, is_user=True):
-        """Add a message to the chat display"""
-        timestamp = datetime.now().strftime("%H:%M:%S")
-        
-        # Store message in conversation history
-        self.conversation_history.append({
-            'message': message,
-            'is_user': is_user,
-            'timestamp': timestamp
-        })
-        
-        # Format and display message
-        display_name = "You: " if is_user else "Assistant: "
-        self.chat_display.configure(state='normal')
-        self.chat_display.insert(tk.END, f"[{timestamp}] ", "timestamp")
-        self.chat_display.insert(tk.END, display_name, "name")
-        self.chat_display.insert(tk.END, f"{message}\n", "user" if is_user else "assistant")
-        self.chat_display.configure(state='disabled')
-        self.chat_display.see(tk.END)
+            self.display_system_message(f"Error checking servers: {str(e)}")

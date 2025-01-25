@@ -56,9 +56,11 @@ class ChatService:
             memories = []
             if self.memory_manager:
                 memories = get_relevant_memories(user_input)
+                # Save the user's input as a potential memory
+                save_memory(user_input, {"role": "user"})
             
             # Format messages for GPT
-            messages = [{"role": "system", "content": "You are Ava, a helpful AI assistant. You have access to memories of your conversations with the user. Maintain context of the current conversation."}]
+            messages = [{"role": "system", "content": "You are Ava, a helpful AI assistant. You have access to memories of your conversations with the user. When the user shares personal information like their name, address, or preferences, acknowledge that you'll remember it for future conversations. Maintain context of the current conversation."}]
             
             # Add memory context if available
             if memories:
@@ -99,55 +101,38 @@ class ChatService:
             
             response = completion.choices[0].message.content
             
-            # Save to memory if appropriate
-            if self.memory_manager:
-                save_memory(user_input, {"role": "user"})
-                save_memory(response, {"role": "assistant"})
-            
             # Update conversation history with response
             self.conversation_history.append({
                 "role": "assistant",
                 "content": response
             })
             
-            # Keep conversation history at a reasonable size
-            if len(self.conversation_history) > 20:
-                self.conversation_history = self.conversation_history[-20:]
+            # Save to memory if appropriate
+            if self.memory_manager:
+                save_memory(response, {"role": "assistant"})
             
             return response
             
         except Exception as e:
-            logging.error(f"Error in get_response: {str(e)}")
+            logging.error(f"Error in chat service: {str(e)}")
             return f"I encountered an error: {str(e)}"
 
     def display_memory_contents(self) -> str:
-        """Display the contents of memory"""
+        """Display all stored memories"""
         try:
-            memories = get_relevant_memories("", max_memories=10)  # Get recent memories
+            memories = get_relevant_memories("", max_memories=100)  # Get all memories
             if not memories:
-                return "No memories found."
-                
-            response = "Here are my recent memories:\n\n"
-            for memory in memories:
-                if isinstance(memory, dict):
-                    content = memory.get('content', '')
-                    timestamp = memory.get('timestamp', '')
-                    role = memory.get('metadata', {}).get('role', 'unknown')
-                    
-                    if timestamp:
-                        try:
-                            dt = datetime.datetime.fromisoformat(timestamp)
-                            timestamp = dt.strftime("%Y-%m-%d %H:%M:%S")
-                        except:
-                            pass
-                    
-                    response += f"[{timestamp}] ({role}): {content}\n"
+                return "No memories stored yet."
             
-            return response.strip()
+            response = "Here are my memories:\n\n"
+            for memory in memories:
+                if isinstance(memory, dict) and 'content' in memory:
+                    response += f"- {memory['content']}\n"
+            return response
             
         except Exception as e:
-            logging.error(f"Error displaying memories: {e}")
-            return f"Error displaying memories: {str(e)}"
+            logging.error(f"Error displaying memories: {str(e)}")
+            return f"Error accessing memories: {str(e)}"
 
     def get_help_message(self) -> str:
         """Get the help message"""

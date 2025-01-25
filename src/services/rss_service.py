@@ -90,29 +90,33 @@ class RSSService:
         for feed_url in self.feeds.get(category, []):
             try:
                 feed = feedparser.parse(feed_url)
-                source = feed.feed.title
+                source = feed.feed.get('title', feed_url)
                 
                 for entry in feed.entries[:5]:  # Get top 5 items from each feed
                     try:
                         # Clean up the summary by removing HTML tags
                         summary_text = entry.get('summary', '')
                         if summary_text and isinstance(summary_text, str):
-                            summary = BeautifulSoup(summary_text, 'html.parser', from_encoding='utf-8').get_text()
+                            # Handle potential HTML content
+                            if '<' in summary_text and '>' in summary_text:
+                                summary = BeautifulSoup(summary_text, 'html.parser').get_text(separator=' ', strip=True)
+                            else:
+                                summary = summary_text.strip()
                         else:
                             summary = "No summary available"
                         summary = summary[:200] + '...' if len(summary) > 200 else summary
                         
                         news_item = NewsItem(
-                            title=entry.title,
+                            title=entry.get('title', 'No title'),
                             source=source,
                             summary=summary,
-                            link=entry.link,
-                            published=entry.get('published', 'No date'),
+                            link=entry.get('link', ''),
+                            published=entry.get('published', ''),
                             category=category
                         )
                         news_items.append(news_item)
                     except Exception as e:
-                        logging.error(f"Error processing news item from {source}: {str(e)}")
+                        logging.error(f"Error processing entry from {feed_url}: {str(e)}")
                         continue
                         
             except Exception as e:

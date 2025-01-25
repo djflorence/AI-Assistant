@@ -37,14 +37,20 @@ class Memory:
             r'(?:my name is|i am|i\'m|call me)\s+(\w+)',
             r'(?:name is|they call me)\s+(\w+)',
             r'(?:known as|go by)\s+(\w+)',
+            r'(?:i live at|my address is|address is)\s+([0-9]+[^,]+(?:,\s*[^,]+)*)',  # Address pattern
+            r'(?:live in|located in|based in)\s+([^,.]+(?:,\s*[^,]+)*)'  # Location pattern
         ]
         
         for pattern in personal_patterns:
             match = re.search(pattern, content_lower)
             if match:
+                info_type = 'name'
+                if 'address' in pattern or 'live' in pattern or 'located' in pattern:
+                    info_type = 'address'
+                
                 self.metadata['personal_info'] = {
-                    'type': 'name',
-                    'value': match.group(1).title()
+                    'type': info_type,
+                    'value': match.group(1).strip()
                 }
                 return True
         return False
@@ -196,23 +202,20 @@ class MemoryManager:
 # Global memory manager instance
 _memory_manager = None
 
-def get_memory_manager() -> Optional[MemoryManager]:
+def get_memory_manager():
     """Get or create the global memory manager instance"""
     global _memory_manager
     if _memory_manager is None:
-        _memory_manager = MemoryManager()
+        memory_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'memory')
+        _memory_manager = MemoryManager(memory_dir)
     return _memory_manager
 
-def save_memory(content: str, metadata: Dict = None) -> str:
+def save_memory(content: str, metadata: Dict = None):
     """Save a new memory"""
     manager = get_memory_manager()
-    if manager:
-        return manager.add_memory(content, metadata)
-    return None
+    return manager.add_memory(content, metadata)
 
-def get_relevant_memories(context: str, max_memories: int = 5) -> List[Dict]:
+def get_relevant_memories(context: str, max_memories: int = 5):
     """Get memories relevant to the given context"""
     manager = get_memory_manager()
-    if manager:
-        return manager.get_relevant_memories(context, max_memories)
-    return []
+    return manager.get_relevant_memories(context, max_memories)

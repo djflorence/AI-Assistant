@@ -1,9 +1,47 @@
+import os
 import queue
 import threading
 import speech_recognition as sr
 from typing import Optional, Callable
 import pyttsx3
 import logging
+from pydub import AudioSegment
+from pydub.utils import which
+
+# Set ffmpeg paths for pydub
+FFMPEG_PATH = os.path.join(os.getenv('LOCALAPPDATA'), 'Microsoft', 'WinGet', 'Packages', 
+                          'Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe', 
+                          'ffmpeg-7.1-full_build', 'bin')
+
+# Add ffmpeg to PATH
+os.environ["PATH"] = FFMPEG_PATH + os.pathsep + os.environ.get("PATH", "")
+
+# Override pydub's which function to always return our ffmpeg path
+def _which(program):
+    if program in ['ffmpeg', 'avconv']:
+        return os.path.join(FFMPEG_PATH, 'ffmpeg.exe')
+    elif program in ['ffprobe', 'avprobe']:
+        return os.path.join(FFMPEG_PATH, 'ffprobe.exe')
+    return None
+
+# Monkey patch pydub's which function
+import pydub.utils
+pydub.utils.which = _which
+
+# Set paths in AudioSegment
+AudioSegment.converter = os.path.join(FFMPEG_PATH, 'ffmpeg.exe')
+AudioSegment.ffmpeg = os.path.join(FFMPEG_PATH, 'ffmpeg.exe')
+AudioSegment.ffprobe = os.path.join(FFMPEG_PATH, 'ffprobe.exe')
+
+# Also set paths in pydub's converter module
+import pydub.audio_segment
+pydub.audio_segment.converter = os.path.join(FFMPEG_PATH, 'ffmpeg.exe')
+pydub.audio_segment.FFMPEG_PATH = os.path.join(FFMPEG_PATH, 'ffmpeg.exe')
+pydub.audio_segment.FFPROBE_PATH = os.path.join(FFMPEG_PATH, 'ffprobe.exe')
+
+# Verify ffmpeg is accessible
+if not which("ffmpeg"):
+    logging.warning("ffmpeg not found in PATH")
 
 class VoiceService:
     def __init__(self):
