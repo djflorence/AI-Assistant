@@ -76,6 +76,11 @@ monitor_state.json
 *_Info.txt
 *_info_secure.txt
 
+# Runtime data directories
+chats/
+images/
+self/
+
 # Additional files to ignore
 monitor_error.log
 old_backup.zip
