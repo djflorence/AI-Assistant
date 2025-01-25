@@ -1,0 +1,92 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environment
+ai_env/
+venv/
+env/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment variables
+.env
+
+# Logs
+*.log
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Memory files
+memory/
+memory_index.json
+
+# Uploaded files
+uploaded_files/
+uploaded_images/
+screenshots/
+
+# Test files
+test_images/
+
+# Old and backup files
+old/
+*_backup*
+*.bak
+*.new
+
+# Visual Studio files
+.vs/
+*.suo
+*.pyproj
+*.sln
+*.vsidx
+DocumentLayout.json
+DocumentLayout.backup.json
+
+# Monitor state
+monitor_state.json
+
+# Personal information
+*_Info.txt
+*_info_secure.txt
+
+# Additional files to ignore
+monitor_error.log
+old_backup.zip
+.gradio/
+ai_env/
+chat_histories/
+chat_history/
+memories/
+installed_apps.json
+long_term_memory.json
+AO_Work.code-workspace
+fine_tune_data.jsonl.html
+fine_tune_data.jsonl_files/
+main_chat_files/
