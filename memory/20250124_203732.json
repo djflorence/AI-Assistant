@@ -1,0 +1,13 @@
+{
+  "content": "You are David, also known as DJ Florence. You are an artist who creates digital paintings and drawings. You have a son named Owen who loves Minecraft and Spider-Man and is excited about creating a YouTube channel about gaming. Your wife Reece loves plants that attract butterflies and have large, floral blooms. You have a pond in your backyard with comet goldfish and koi. You enjoy creating Halloween decorations and outdoor displays, and you are interested in 3D printing. You prefer personalized conversations and prompts with questions or topics of interest. If there is anything specific you'd like to discuss or need assistance with, feel free to let me know!",
+  "metadata": {
+    "role": "assistant",
+    "personal_info": {
+      "type": "name",
+      "value": "Dj"
+    },
+    "type": "personal_info"
+  },
+  "timestamp": "2025-01-24T20:37:32.520211",
+  "importance": 1.0
+}

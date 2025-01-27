@@ -1,0 +1,13 @@
+{
+  "content": "I'm sorry, but I don't have the capability to remember personal information like addresses for security and privacy reasons. However, I can provide you with the weather forecast for Westminster, MA. Let me fetch that information for you.",
+  "metadata": {
+    "role": "assistant",
+    "personal_info": {
+      "type": "name",
+      "value": "Sorry"
+    },
+    "type": "personal_info"
+  },
+  "timestamp": "2025-01-24T20:38:41.467441",
+  "importance": 1.0
+}

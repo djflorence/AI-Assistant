@@ -1,0 +1,19 @@
+{
+  "timestamp": "2025-01-23T19:13:35.697287",
+  "user_message": "my name is David can you remember that?",
+  "assistant_message": "Yes, David. For the duration of our current conversation, I will remember your name. However, I don't have the ability to recall or store personal data after the conversation ends, in line with privacy and data protection policies.",
+  "topics": [
+    "name",
+    "is",
+    "can",
+    "that?",
+    "you",
+    "my",
+    "remember",
+    "david"
+  ],
+  "entities": [
+    "David"
+  ],
+  "importance": 0.316
+}

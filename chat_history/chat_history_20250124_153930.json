@@ -1,0 +1,17 @@
+[
+  {
+    "timestamp": "15:39:22",
+    "user": "",
+    "assistant": "Switched to friendly persona"
+  },
+  {
+    "timestamp": "15:39:30",
+    "user": "Hi how are you",
+    "assistant": ""
+  },
+  {
+    "timestamp": "15:39:30",
+    "user": "",
+    "assistant": "Hello, David! I'm here and ready to assist you. How are you doing today?"
+  }
+]

@@ -1,0 +1,131 @@
+[
+  {
+    "file": "memories\\memory_20250123_181956.json",
+    "timestamp": "2025-01-23T18:19:56.726334",
+    "topics": [
+      "hi"
+    ],
+    "entities": [],
+    "importance": 0.044
+  },
+  {
+    "file": "memories\\memory_20250123_182255.json",
+    "timestamp": "2025-01-23T18:22:55.140163",
+    "topics": [
+      "hi"
+    ],
+    "entities": [],
+    "importance": 0.044
+  },
+  {
+    "file": "memories\\memory_20250123_182300.json",
+    "timestamp": "2025-01-23T18:23:00.726652",
+    "topics": [
+      "name",
+      "is",
+      "what",
+      "your"
+    ],
+    "entities": [],
+    "importance": 0.141
+  },
+  {
+    "file": "memories\\memory_20250123_182318.json",
+    "timestamp": "2025-01-23T18:23:18.759430",
+    "topics": [
+      "the",
+      "i",
+      "ava",
+      "give",
+      "to",
+      "am",
+      "name",
+      "going",
+      "you"
+    ],
+    "entities": [
+      "I",
+      "Ava"
+    ],
+    "importance": 0.129
+  },
+  {
+    "file": "memories\\memory_20250123_182326.json",
+    "timestamp": "2025-01-23T18:23:26.907640",
+    "topics": [
+      "memory?",
+      "have",
+      "a",
+      "do",
+      "you"
+    ],
+    "entities": [],
+    "importance": 0.307
+  },
+  {
+    "file": "memories\\memory_20250123_182336.json",
+    "timestamp": "2025-01-23T18:23:36.678424",
+    "topics": [
+      "chat",
+      "save"
+    ],
+    "entities": [],
+    "importance": 0.352
+  },
+  {
+    "file": "memories\\memory_20250123_191308.json",
+    "timestamp": "2025-01-23T19:13:08.791732",
+    "topics": [
+      "name?",
+      "your",
+      "what",
+      "is"
+    ],
+    "entities": [],
+    "importance": 0.124
+  },
+  {
+    "file": "memories\\memory_20250123_191322.json",
+    "timestamp": "2025-01-23T19:13:22.013566",
+    "topics": [
+      "know",
+      "name?",
+      "my",
+      "yo",
+      "do"
+    ],
+    "entities": [],
+    "importance": 0.317
+  },
+  {
+    "file": "memories\\memory_20250123_191322.json",
+    "timestamp": "2025-01-23T19:13:22.014771",
+    "topics": [
+      "know",
+      "name?",
+      "my",
+      "yo",
+      "do"
+    ],
+    "entities": [],
+    "importance": 0.317
+  },
+  {
+    "file": "memories\\memory_20250123_191335.json",
+    "timestamp": "2025-01-23T19:13:35.697287",
+    "topics": [
+      "name",
+      "is",
+      "can",
+      "that?",
+      "you",
+      "my",
+      "remember",
+      "david"
+    ],
+    "entities": [
+      "David"
+    ],
+    "importance": 0.316
+  }
+]

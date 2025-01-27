@@ -1,0 +1,21 @@
+{
+  "timestamp": "2025-01-23T18:23:18.759430",
+  "user_message": "I am going to give you the name Ava",
+  "assistant_message": "Thank you for giving me the name Ava. How can I assist you today, Ava?",
+  "topics": [
+    "the",
+    "i",
+    "ava",
+    "give",
+    "to",
+    "am",
+    "name",
+    "going",
+    "you"
+  ],
+  "entities": [
+    "I",
+    "Ava"
+  ],
+  "importance": 0.129
+}

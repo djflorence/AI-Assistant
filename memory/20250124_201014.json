@@ -1,0 +1,13 @@
+{
+  "content": "I'm sorry, I don't have the capability to remember personal information about users for security and privacy reasons. How can I assist you today?",
+  "metadata": {
+    "role": "assistant",
+    "personal_info": {
+      "type": "name",
+      "value": "Sorry"
+    },
+    "type": "personal_info"
+  },
+  "timestamp": "2025-01-24T20:10:14.725516",
+  "importance": 1.0
+}

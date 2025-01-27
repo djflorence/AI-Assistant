@@ -1,0 +1,82 @@
+[
+  {
+    "timestamp": "18:27:53",
+    "user": "hi",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-23T18:27:53.551031",
+    "user": "hi",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-23T18:27:54.036657",
+    "user": "",
+    "assistant": "Hello! How can I assist you today?"
+  },
+  {
+    "timestamp": "18:27:54",
+    "user": "",
+    "assistant": "Hello! How can I assist you today?"
+  },
+  {
+    "timestamp": "18:27:58",
+    "user": "what is your name",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-23T18:27:58.233827",
+    "user": "what is your name",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-23T18:27:58.893089",
+    "user": "",
+    "assistant": "I am an AI assistant here to help you. You can call me Assistant or any other name you'd like. How can I assist you today?"
+  },
+  {
+    "timestamp": "18:27:58",
+    "user": "",
+    "assistant": "I am an AI assistant here to help you. You can call me Assistant or any other name you'd like. How can I assist you today?"
+  },
+  {
+    "timestamp": "18:28:21",
+    "user": "I am going to give you the name Ava",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-23T18:28:21.164513",
+    "user": "I am going to give you the name Ava",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-23T18:28:21.591959",
+    "user": "",
+    "assistant": "Great! You can call me Ava. How can I assist you today?"
+  },
+  {
+    "timestamp": "18:28:21",
+    "user": "",
+    "assistant": "Great! You can call me Ava. How can I assist you today?"
+  },
+  {
+    "timestamp": "18:28:29",
+    "user": "save chat",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-23T18:28:29.224450",
+    "user": "save chat",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-23T18:28:29.886721",
+    "user": "",
+    "assistant": "I don't have the capability to save chats. If you need to save the chat, you can manually copy and paste the conversation into a document on your device for later reference. Let me know if you need help with anything else."
+  },
+  {
+    "timestamp": "18:28:29",
+    "user": "",
+    "assistant": "I don't have the capability to save chats. If you need to save the chat, you can manually copy and paste the conversation into a document on your device for later reference. Let me know if you need help with anything else."
+  }
+]

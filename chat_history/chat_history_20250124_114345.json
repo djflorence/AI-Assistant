@@ -1,0 +1,17 @@
+[
+  {
+    "timestamp": "11:43:40",
+    "user": "",
+    "assistant": "Environment Information:\n\nPython:\n  Version: 3.12.8\n\nSystem:\n  Os: Windows\n  Release: 11\n  Version: 10.0.26120\n  Machine: AMD64\n  Processor: AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD\n\n"
+  },
+  {
+    "timestamp": "11:43:43",
+    "user": "/servers",
+    "assistant": ""
+  },
+  {
+    "timestamp": "11:43:43",
+    "user": "",
+    "assistant": "No development servers currently running."
+  }
+]

@@ -42,14 +42,13 @@ ENV/
 .DS_Store
 Thumbs.db
 
-# Memory files
-memory/
-memory_index.json
-
-# Uploaded files
-uploaded_files/
-uploaded_images/
-screenshots/
+# Runtime data directories
+runtime/
+runtime/memory/
+runtime/chats/
+runtime/images/
+runtime/self/
+runtime/uploads/
 
 # Test files
 test_images/
@@ -76,19 +75,12 @@ monitor_state.json
 *_Info.txt
 *_info_secure.txt
 
-# Runtime data directories
-chats/
-images/
-self/
-
 # Additional files to ignore
 monitor_error.log
 old_backup.zip
 .gradio/
 ai_env/
 chat_histories/
-chat_history/
-memories/
 installed_apps.json
 long_term_memory.json
 AO_Work.code-workspace

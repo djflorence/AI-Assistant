@@ -1,0 +1,12 @@
+{
+  "content": "I am 50 years old, can you add that to your memory",
+  "metadata": {
+    "personal_info": {
+      "type": "name",
+      "value": "50"
+    },
+    "type": "personal_info"
+  },
+  "timestamp": "2025-01-24T20:45:04.947294",
+  "importance": 1.0
+}

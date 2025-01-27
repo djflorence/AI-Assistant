@@ -1,0 +1,10 @@
+{
+  "timestamp": "2025-01-23T18:19:56.726334",
+  "user_message": "hi",
+  "assistant_message": "Hello! How can I assist you today?",
+  "topics": [
+    "hi"
+  ],
+  "entities": [],
+  "importance": 0.044
+}

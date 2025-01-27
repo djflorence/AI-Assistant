@@ -1,0 +1,13 @@
+{
+  "content": "Hello! Yes, I'm still here. How can I assist you today?",
+  "metadata": {
+    "role": "assistant",
+    "personal_info": {
+      "type": "name",
+      "value": "still"
+    },
+    "type": "personal_info"
+  },
+  "timestamp": "2025-01-24T21:03:09.226859",
+  "importance": 1.0
+}

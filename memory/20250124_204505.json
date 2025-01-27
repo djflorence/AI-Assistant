@@ -1,0 +1,13 @@
+{
+  "content": "I'm sorry, but I can't store personal information like age for security and privacy reasons. However, I can certainly keep that in mind for our ongoing conversations if it's relevant. How can I assist you today, David?",
+  "metadata": {
+    "role": "assistant",
+    "personal_info": {
+      "type": "name",
+      "value": "sorry"
+    },
+    "type": "personal_info"
+  },
+  "timestamp": "2025-01-24T20:45:05.695158",
+  "importance": 1.0
+}

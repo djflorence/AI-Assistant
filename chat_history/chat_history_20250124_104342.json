@@ -1,0 +1,82 @@
+[
+  {
+    "timestamp": "10:42:21",
+    "user": "hi",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-24T10:42:21.192711",
+    "user": "hi",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-24T10:42:21.872308",
+    "user": "",
+    "assistant": "Hello. It's great to see you again. How can I assist you today?"
+  },
+  {
+    "timestamp": "10:42:21",
+    "user": "",
+    "assistant": "Hello. It's great to see you again. How can I assist you today?"
+  },
+  {
+    "timestamp": "10:42:28",
+    "user": "do you remember my name",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-24T10:42:28.578012",
+    "user": "do you remember my name",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-24T10:42:29.115515",
+    "user": "",
+    "assistant": "Yes, David, I remember your name. How can I assist you today?"
+  },
+  {
+    "timestamp": "10:42:29",
+    "user": "",
+    "assistant": "Yes, David, I remember your name. How can I assist you today?"
+  },
+  {
+    "timestamp": "10:42:35",
+    "user": "and what is yours",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-24T10:42:35.732952",
+    "user": "and what is yours",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-24T10:42:36.713166",
+    "user": "",
+    "assistant": "I am Ava, your AI coding assistant. How can I help you today?"
+  },
+  {
+    "timestamp": "10:42:36",
+    "user": "",
+    "assistant": "I am Ava, your AI coding assistant. How can I help you today?"
+  },
+  {
+    "timestamp": "10:42:48",
+    "user": "great it is good to have you back",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-24T10:42:48.674142",
+    "user": "great it is good to have you back",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-24T10:42:49.266514",
+    "user": "",
+    "assistant": "Thank you, David. I'm here to assist you with your coding tasks. What would you like to work on today?"
+  },
+  {
+    "timestamp": "10:42:49",
+    "user": "",
+    "assistant": "Thank you, David. I'm here to assist you with your coding tasks. What would you like to work on today?"
+  }
+]

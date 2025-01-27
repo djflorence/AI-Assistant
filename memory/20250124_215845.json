@@ -1,0 +1,13 @@
+{
+  "content": "I am in the process of imporoving your fundtionality",
+  "metadata": {
+    "role": "user",
+    "personal_info": {
+      "type": "name",
+      "value": "in"
+    },
+    "type": "personal_info"
+  },
+  "timestamp": "2025-01-24T21:58:45.755815",
+  "importance": 1.0
+}

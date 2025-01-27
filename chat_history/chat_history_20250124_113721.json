@@ -1,0 +1,52 @@
+[
+  {
+    "message": "Running speed test... This may take a minute.",
+    "is_user": false,
+    "timestamp": "11:34:48"
+  },
+  {
+    "message": "hi ava can you run an internet speed test",
+    "is_user": true,
+    "timestamp": "11:35:58"
+  },
+  {
+    "message": "Would you like to launch an internet speed test? Type /accept to confirm or /reject to cancel.",
+    "is_user": false,
+    "timestamp": "11:35:58"
+  },
+  {
+    "message": "/accept",
+    "is_user": true,
+    "timestamp": "11:36:13"
+  },
+  {
+    "message": "/accept",
+    "is_user": true,
+    "timestamp": "2025-01-24T11:36:13.213071"
+  },
+  {
+    "message": "I will now run the internet speed test for you. This process may take a moment. Thank you for your patience.",
+    "is_user": false,
+    "timestamp": "2025-01-24T11:36:14.211332"
+  },
+  {
+    "message": "I will now run the internet speed test for you. This process may take a moment. Thank you for your patience.",
+    "is_user": false,
+    "timestamp": "11:36:14"
+  },
+  {
+    "message": "it looks like you did not send a response do yo uknow why?",
+    "is_user": true,
+    "timestamp": "11:37:20"
+  },
+  {
+    "message": "it looks like you did not send a response do yo uknow why?",
+    "is_user": true,
+    "timestamp": "2025-01-24T11:37:20.906698"
+  },
+  {
+    "message": "I apologize for the oversight. Let me run the internet speed test for you now. Thank you for your patience.",
+    "is_user": false,
+    "timestamp": "2025-01-24T11:37:21.588596"
+  }
+]

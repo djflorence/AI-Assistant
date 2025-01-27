@@ -1,0 +1,24 @@
+[20:48:05] You: i am 50 years old can you add that to your memory
+[20:48:06] Assistant: Got it, David! I've noted that you're 50 years old for our future conversations. How can I assist you today?
+[20:48:13] You: /memory
+[20:48:13] Assistant: Here are my memories:
+
+- i am 50 years old can you add that to your memory
+- I'm sorry, but I can't store personal information like age for security and privacy reasons. However, I can certainly keep that in mind for our ongoing conversations if it's relevant. How can I assist you today, David?
+- I am 50 years old, can you add that to your memory
+- I'm sorry, but I can't store personal information like addresses for security and privacy reasons. However, I can certainly help you with other information or tasks. How can I assist you today, David?
+- I'm sorry, but I don't have the capability to remember personal information like addresses for security and privacy reasons. However, I can provide you with the weather forecast for Westminster, MA. Let me fetch that information for you.
+- You are David, also known as DJ Florence. You are an artist who creates digital paintings and drawings. You have a son named Owen who loves Minecraft and Spider-Man and is excited about creating a YouTube channel about gaming. Your wife Reece loves plants that attract butterflies and have large, floral blooms. You have a pond in your backyard with comet goldfish and koi. You enjoy creating Halloween decorations and outdoor displays, and you are interested in 3D printing. You prefer personalized conversations and prompts with questions or topics of interest. If there is anything specific you'd like to discuss or need assistance with, feel free to let me know!
+- Your name is David. How can I assist you today, David?
+- I am Ava, your helpful AI assistant. How can I assist you today?
+- I'm sorry, I don't have the capability to remember personal information about users for security and privacy reasons. How can I assist you today?
+- I live at 27 pierce road, westminster, ma.  please add that to your memory.
+- I can't provide you with the current weather forecast without knowing your location. Could you please tell me the city or area you are in so I can give you the relevant weather information?
+- I can provide you with the weather forecast. Could you please specify the location or city you would like the forecast for?
+- Hello! How can I assist you today?
+- Yes, I have access to memories of our conversations to provide you with better assistance. How can I help you today?
+- Hello! How can I assist you today?
+- Hello! How can I assist you today?
+- Got it, David! I've noted that you're 50 years old for our future conversations. How can I assist you today?
+
+

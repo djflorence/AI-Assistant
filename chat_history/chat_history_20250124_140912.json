@@ -1,0 +1,52 @@
+[
+  {
+    "timestamp": "14:08:18",
+    "user": "do you knowmy name?",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-24T14:08:18.695023",
+    "user": "do you knowmy name?",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-24T14:08:19.462443",
+    "user": "",
+    "assistant": "Yes, I do. Your name is <User's Name>. How can I assist you today?"
+  },
+  {
+    "timestamp": "14:08:19",
+    "user": "",
+    "assistant": "Yes, I do. Your name is <User's Name>. How can I assist you today?"
+  },
+  {
+    "timestamp": "14:08:49",
+    "user": "/memory",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-24T14:08:49.911272",
+    "user": "/memory",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-24T14:08:49.917268",
+    "user": "",
+    "assistant": "No memories found."
+  },
+  {
+    "timestamp": "14:08:49",
+    "user": "",
+    "assistant": "No memories found."
+  },
+  {
+    "timestamp": "14:09:11",
+    "user": "still working on your memory",
+    "assistant": ""
+  },
+  {
+    "timestamp": "14:09:12",
+    "user": "",
+    "assistant": "I'm always here to help you with anything you need. Just let me know how I can assist you today."
+  }
+]

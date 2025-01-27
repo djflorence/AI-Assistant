@@ -1,0 +1,20 @@
+=== Chat History ===
+Saved on: 2025-01-23 15:16:27
+==================
+
+[15:14:14] You: hi
+
+[15:14:17] AI: Hello! How can I assist you today? I'm currently managing your Windows 11 system. It's running smoothly with CPU usage at 0.0%. However, your available memory is a bit low. Is there anything specific you would like help with?
+
+[15:14:30] You: can you save this chat to the current directory
+
+[15:14:33] AI: Of course, I can help you with that. I will save this chat to your current working directory which is "C:\\AI". Please let me know if you need help with anything else.
+
+[15:15:06] You: can you save this chat to c
+
+[15:15:10] AI: Sure, I can save the chat to the C drive. However, I would recommend specifying a specific directory or folder within the C drive to ensure the chat is saved in a location that's easy for you to find. May I know the specific directory or folder you'd like to use?
+
+[15:16:01] You: can you save this chat to  C:\ai
+
+[15:16:06] AI: Absolutely, I can save this chat to the specified directory, which is "C:\\ai". If you need any further assistance or have more tasks for me, please do let me know.
+

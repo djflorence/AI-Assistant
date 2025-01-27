@@ -1,0 +1,12 @@
+{
+  "content": "I live at 27 pierce road, westminster, ma.  please add that to your memory.",
+  "metadata": {
+    "personal_info": {
+      "type": "address",
+      "value": "27 pierce road, westminster, ma.  please add that to your memory."
+    },
+    "type": "personal_info"
+  },
+  "timestamp": "2025-01-24T20:40:32.262763",
+  "importance": 0.9999999986828705
+}

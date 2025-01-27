@@ -1,0 +1,13 @@
+{
+  "timestamp": "2025-01-23T18:23:00.726652",
+  "user_message": "what is your name",
+  "assistant_message": "I am an AI assistant and you can refer to me as your helpful assistant. How can I assist you today?",
+  "topics": [
+    "name",
+    "is",
+    "what",
+    "your"
+  ],
+  "entities": [],
+  "importance": 0.141
+}

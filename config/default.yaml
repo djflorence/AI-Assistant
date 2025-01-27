@@ -16,8 +16,6 @@ paths:
 # Chat interface settings
 interface:
   theme: "dark"
-  max_messages: 100
-  timestamp_format: "%H:%M:%S"
   command_prefix: "/"
   prompt: "You: "
 
@@ -46,6 +44,59 @@ api:
     max_tokens: 150
     # Add your API key to .env file, not here
     timeout_seconds: 30
+
+# UI Component settings
+ui:
+  window:
+    width: 1200
+    height: 800
+    min_width: 800
+    min_height: 600
+  components:
+    chat_display:
+      max_messages: 100
+      timestamp_format: "%H:%M:%S"
+    task_panel:
+      max_tasks: 10
+      refresh_interval_ms: 1000
+    toolbar:
+      show_icons: true
+      icon_size: 24
+
+# Service settings
+services:
+  chat:
+    model: "gpt-4"
+    max_history: 50
+    timeout_seconds: 30
+    retry_attempts: 3
+  memory:
+    storage_path: "./memory"
+    max_size: 1000
+    backup_interval_hours: 24
+    cleanup_threshold: 0.8
+  voice:
+    enabled: true
+    input_device: "default"
+    output_device: "default"
+    timeout_seconds: 5
+    energy_threshold: 300
+
+# Plugin settings
+plugins:
+  enabled: true
+  auto_load: true
+  directory: "plugins"
+  settings:
+    rss:
+      update_interval: 300
+      max_items: 10
+    git:
+      auto_backup: true
+      backup_interval: 3600
+    screen:
+      capture_quality: 0.8
+      max_screenshots: 100
 
 # Command settings
 commands:

@@ -1,0 +1,92 @@
+[
+  {
+    "timestamp": "15:23:52",
+    "user": "hi ava",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-24T15:23:52.213474",
+    "user": "hi ava",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-24T15:23:53.083145",
+    "user": "",
+    "assistant": "Hello, David. How are you doing today? If there's anything specific you'd like to discuss or if you need any assistance, feel free to let me know."
+  },
+  {
+    "timestamp": "15:23:53",
+    "user": "",
+    "assistant": "Hello, David. How are you doing today? If there's anything specific you'd like to discuss or if you need any assistance, feel free to let me know."
+  },
+  {
+    "timestamp": "15:24:05",
+    "user": "can you tell me what you know about me?",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-24T15:24:05.588370",
+    "user": "can you tell me what you know about me?",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-24T15:24:08.572382",
+    "user": "",
+    "assistant": "Of course, David. Based on our previous conversations, I know quite a bit about you:\n\n- Your wife, Reece, loves plants that attract butterflies and have large, floral blooms.\n- Your son's name is Owen, who is a fan of Minecraft and Spider-Man and is excited about creating a YouTube channel about gaming.\n- You are known as DJ Florence, an artist who creates digital paintings and drawings. Your website is djflorence.net.\n- You have a pond in your backyard with comet goldfish and koi.\n- You are a huge procrastinator and prefer focusing on the drawing and artwork itself rather than marketing.\n- You have an Anycubic Kobra 3 3D printer and enjoy creating Halloween decorations and outdoor displays.\n- You prefer gothic metal songs in the style of Lord of the Lost and are working on music creation.\n- You are trying to automate content creation for TikTok and YouTube using AI.\n- Your in-laws, Mimi and Boppy, are involved in gardening and vintage cars, respectively.\n- Kent, a family friend, is interested in technology and AI and works at the American Heritage Museum.\n- Patty, Marisa's sister, loves paddleboarding and gardening.\n- You have successfully connected to the Google Drive API using a service account and host your project on GitHub.\n- You are developing interactive AI-driven games and content for Owen.\n- You want to use AI for discussing your artwork in video podcasts with minimal personal involvement.\n\nIs there anything specific you'd like to discuss or any help you need today?"
+  },
+  {
+    "timestamp": "15:24:08",
+    "user": "",
+    "assistant": "Of course, David. Based on our previous conversations, I know quite a bit about you:\n\n- Your wife, Reece, loves plants that attract butterflies and have large, floral blooms.\n- Your son's name is Owen, who is a fan of Minecraft and Spider-Man and is excited about creating a YouTube channel about gaming.\n- You are known as DJ Florence, an artist who creates digital paintings and drawings. Your website is djflorence.net.\n- You have a pond in your backyard with comet goldfish and koi.\n- You are a huge procrastinator and prefer focusing on the drawing and artwork itself rather than marketing.\n- You have an Anycubic Kobra 3 3D printer and enjoy creating Halloween decorations and outdoor displays.\n- You prefer gothic metal songs in the style of Lord of the Lost and are working on music creation.\n- You are trying to automate content creation for TikTok and YouTube using AI.\n- Your in-laws, Mimi and Boppy, are involved in gardening and vintage cars, respectively.\n- Kent, a family friend, is interested in technology and AI and works at the American Heritage Museum.\n- Patty, Marisa's sister, loves paddleboarding and gardening.\n- You have successfully connected to the Google Drive API using a service account and host your project on GitHub.\n- You are developing interactive AI-driven games and content for Owen.\n- You want to use AI for discussing your artwork in video podcasts with minimal personal involvement.\n\nIs there anything specific you'd like to discuss or any help you need today?"
+  },
+  {
+    "timestamp": "15:24:42",
+    "user": "do you also remember our chats?",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-24T15:24:42.133543",
+    "user": "do you also remember our chats?",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-24T15:24:43.034416",
+    "user": "",
+    "assistant": "Yes, I can remember our chats and keep track of our conversations to maintain context and provide you with personalized assistance. If there's anything specific from our previous chats that you'd like to revisit or discuss further, feel free to let me know."
+  },
+  {
+    "timestamp": "15:24:43",
+    "user": "",
+    "assistant": "Yes, I can remember our chats and keep track of our conversations to maintain context and provide you with personalized assistance. If there's anything specific from our previous chats that you'd like to revisit or discuss further, feel free to let me know."
+  },
+  {
+    "timestamp": "15:25:03",
+    "user": "how many promts can you remember in your short term memory?",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-24T15:25:03.197393",
+    "user": "how many promts can you remember in your short term memory?",
+    "assistant": ""
+  },
+  {
+    "timestamp": "2025-01-24T15:25:04.606562",
+    "user": "",
+    "assistant": "I can remember and maintain context for the duration of our conversation, which typically includes multiple prompts and responses. My short-term memory allows me to recall the recent details of our current interaction to provide you with continuous assistance and personalized responses. Feel free to ask more questions or share any information you'd like to discuss."
+  },
+  {
+    "timestamp": "15:25:04",
+    "user": "",
+    "assistant": "I can remember and maintain context for the duration of our conversation, which typically includes multiple prompts and responses. My short-term memory allows me to recall the recent details of our current interaction to provide you with continuous assistance and personalized responses. Feel free to ask more questions or share any information you'd like to discuss."
+  },
+  {
+    "timestamp": "15:25:23",
+    "user": "can you hear my voice",
+    "assistant": ""
+  },
+  {
+    "timestamp": "15:25:24",
+    "user": "",
+    "assistant": "As an AI text-based assistant, I can't physically hear your voice. I can only interact through text-based communication. Feel free to type out any questions or information you'd like to share, and I'll do my best to assist you!"
+  }
+]

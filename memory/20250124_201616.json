@@ -1,0 +1,13 @@
+{
+  "content": "Your name is David. How can I assist you today, David?",
+  "metadata": {
+    "role": "assistant",
+    "personal_info": {
+      "type": "name",
+      "value": "David"
+    },
+    "type": "personal_info"
+  },
+  "timestamp": "2025-01-24T20:16:16.468451",
+  "importance": 1.0
+}

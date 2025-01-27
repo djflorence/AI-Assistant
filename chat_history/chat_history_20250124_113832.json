@@ -1,0 +1,102 @@
+[
+  {
+    "message": "Running speed test... This may take a minute.",
+    "is_user": false,
+    "timestamp": "11:34:48"
+  },
+  {
+    "message": "hi ava can you run an internet speed test",
+    "is_user": true,
+    "timestamp": "11:35:58"
+  },
+  {
+    "message": "Would you like to launch an internet speed test? Type /accept to confirm or /reject to cancel.",
+    "is_user": false,
+    "timestamp": "11:35:58"
+  },
+  {
+    "message": "/accept",
+    "is_user": true,
+    "timestamp": "11:36:13"
+  },
+  {
+    "message": "/accept",
+    "is_user": true,
+    "timestamp": "2025-01-24T11:36:13.213071"
+  },
+  {
+    "message": "I will now run the internet speed test for you. This process may take a moment. Thank you for your patience.",
+    "is_user": false,
+    "timestamp": "2025-01-24T11:36:14.211332"
+  },
+  {
+    "message": "I will now run the internet speed test for you. This process may take a moment. Thank you for your patience.",
+    "is_user": false,
+    "timestamp": "11:36:14"
+  },
+  {
+    "message": "it looks like you did not send a response do yo uknow why?",
+    "is_user": true,
+    "timestamp": "11:37:20"
+  },
+  {
+    "message": "it looks like you did not send a response do yo uknow why?",
+    "is_user": true,
+    "timestamp": "2025-01-24T11:37:20.906698"
+  },
+  {
+    "message": "I apologize for the oversight. Let me run the internet speed test for you now. Thank you for your patience.",
+    "is_user": false,
+    "timestamp": "2025-01-24T11:37:21.588596"
+  },
+  {
+    "message": "I apologize for the oversight. Let me run the internet speed test for you now. Thank you for your patience.",
+    "is_user": false,
+    "timestamp": "11:37:21"
+  },
+  {
+    "message": "can you be much more verbose about each step you take to run the test?",
+    "is_user": true,
+    "timestamp": "11:37:46"
+  },
+  {
+    "message": "Would you like to launch the test?? Type /accept to confirm or /reject to cancel.",
+    "is_user": false,
+    "timestamp": "11:37:46"
+  },
+  {
+    "message": "/accept",
+    "is_user": true,
+    "timestamp": "11:37:56"
+  },
+  {
+    "message": "/accept",
+    "is_user": true,
+    "timestamp": "2025-01-24T11:37:56.605089"
+  },
+  {
+    "message": "I will begin the process of running an internet speed test on your connection. This test will help evaluate the speed and performance of your internet connection. Thank you for giving me the go-ahead to proceed. ",
+    "is_user": false,
+    "timestamp": "2025-01-24T11:37:57.476884"
+  },
+  {
+    "message": "I will begin the process of running an internet speed test on your connection. This test will help evaluate the speed and performance of your internet connection. Thank you for giving me the go-ahead to proceed. ",
+    "is_user": false,
+    "timestamp": "11:37:57"
+  },
+  {
+    "message": "why is the sky blue",
+    "is_user": true,
+    "timestamp": "11:38:31"
+  },
+  {
+    "message": "why is the sky blue",
+    "is_user": true,
+    "timestamp": "2025-01-24T11:38:31.011270"
+  },
+  {
+    "message": "The blue color of the sky is due to a phenomenon called Rayleigh scattering. When sunlight reaches the Earth's atmosphere, it interacts with the gases and particles in the air. The shorter blue wavelengths of light are scattered in all directions by the gases and particles, making the sky appear blue to our eyes.\n\nThe reason blue light is scattered more than other colors is because it travels as shorter, smaller waves. This scattering of blue light is more noticeable to us during the day when the sun is overhead, giving the sky its characteristic blue hue.\n\nSo, in simple terms, the sky appears blue because of how sunlight interacts with the Earth's atmosphere, scattering blue light more effectively than other colors.",
+    "is_user": false,
+    "timestamp": "2025-01-24T11:38:32.798793"
+  }
+]
