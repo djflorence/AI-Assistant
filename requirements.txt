@@ -231,3 +231,4 @@ watchdog>=3.0.0
 # RSS feed parser dependencies
 feedparser==6.0.10
 beautifulsoup4==4.12.3
+pygame==2.5.2

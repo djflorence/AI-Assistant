@@ -9,6 +9,7 @@ A powerful AI assistant that combines natural language processing, real-time wea
 - System monitoring and resource tracking
 - File operations and management
 - Plugin system for extensibility
+- Zombie Chase mini-game plugin
 - Memory management for contextual conversations
 
 ## Setup
